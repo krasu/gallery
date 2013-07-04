@@ -7,68 +7,35 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="css/normalize.css">
+    <link href='http://fonts.googleapis.com/css?family=Special+Elite' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/gallery.css">
 </head>
 <body>
-    <div id="impress">
-        <div id="overview" class="step">
-            <div class="wheel"></div>
-        </div>
-    </div>
+<div id="impress">
+    <div id="overview" class="step">
+        <div class="wheel">
+            <i class="icon-arrow-up icon-7 arrow"></i>
 
-
-<div id="step-" class="step img">
-    <div class="border">
-        <div class="shadow">
-            <img src="img/vintage-ss.png">
+            <div class="label">
+            </div>
         </div>
     </div>
 </div>
 
 
+<div id="step-" class="step img">
+    <div class="border">
+        <div class="retro">
+            <img src="img/img1.png">
+        </div>
+        <div class="caption">Some awesome text will be here</div>
+    </div>
+</div>
+<div class="cutout" id="cutout-"></div>
+
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/noisy/1.1/jquery.noisy.min.js"></script>
 <script src="components/impress.js/js/impress.js"></script>
-<script>
-    $(function () {
-        var enableImpress = true
-
-        for (var i = 0; i < 8; i++) {
-            $('#step-').clone().attr('id', 'step-' + i).appendTo('#impress')
-        }
-        $('#step-').remove()
-
-        var elems = $('.step.img'),
-                radius = 1600;
-
-        elems.each(function (i, elem) {
-            var theta = -i / (elems.length - 1) * 2 * Math.PI,
-                    x = Math.round(radius * Math.cos(theta)),
-                    y = Math.round(radius * Math.sin(theta)),
-                    rotation = Math.round(theta / (2 * Math.PI) * 360 - 90);
-
-            $(elem).attr({
-                'data-x': x,
-                'data-y': y,
-                'data-rotate-z': rotation
-            })
-        })
-
-        $('#overview').attr({
-            'data-x': 0,
-            'data-y': 0,
-            'data-scale': 5
-        })
-
-        $('.lense').css({
-            width: $(window).width(),
-            height: $(window).height()
-        })
-        enableImpress && impress().init();
-    })
-
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>
