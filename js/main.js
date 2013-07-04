@@ -4,31 +4,28 @@ $(function () {
         frame = $('.frame'),
         stepTpl = $('#step-')
 
-    for (var i = 0; i <= 8; i++) {
+
+    for (var i = 0; i < 8; i++) {
         stepTpl.clone().attr('id', 'step-' + i).appendTo(impressEl)
     }
     stepTpl.remove()
 
-    var images = $('.step.img'),
+    var steps = $('.step').not('#overview'),
         radius = 2000;
 
-    images.each(function (i, elem) {
-        var theta = -i / (images.length - 1) * 2 * Math.PI,
-            x = Math.round(radius * Math.cos(theta)),
-            y = Math.round(radius * Math.sin(theta)),
-            rotation = Math.round(theta / (2 * Math.PI) * 360 - 90);
+    var increase = Math.PI * 2 / steps.length, angle = 160;
+    steps.each(function (i, elem) {
+        var x = radius * Math.cos(angle) + radius * 2,
+            y = radius * Math.sin(angle) + radius * 2,
+            rotation = Math.round(angle / (2 * Math.PI) * 360 - 90);
 
         $(elem).attr({
             'data-x': x,
             'data-y': y,
             'data-rotate-z': rotation
         })
-    })
 
-    $('#overview').attr({
-        'data-x': 0,
-        'data-y': 0,
-        'data-scale': 5
+        angle += increase;
     })
 
     function replaceFrame() {

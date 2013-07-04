@@ -8,7 +8,7 @@
   top: 0;
   left: 0;
   background-color: #000000;
-  background-image: url(../img/noise.png);
+  background-image: url(../img/noise.jpg);
 }
 
 .frame {
@@ -16,12 +16,9 @@
   height: 800px;
   overflow: hidden;
   position: relative;
-  background-color: #f8f8f8;
   border-radius: 5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: lighten(#000, 20%);
-
+  border: 2px solid lighten(#000, 20%);
+  background: #f8f8f8 url(../img/paper.jpg);
 
   .shadow {
     box-shadow: inset 0px -1px 100px #000;
@@ -59,7 +56,6 @@
     content: "";
     top: 0;
     left: 0;
-    //    background-image: url(../img/paper.jpg);
     background-color: #a79b8f;
     position: absolute;
     box-shadow: 7px 7px 5px rgba(50, 50, 50, 0.75);
@@ -88,37 +84,30 @@
   }
 }
 
-.cutout {
-  background-color: red;
-  width: 100px;
-  height: 100px;
-  border-radius: 25px;
-  position: absolute;
-  z-index: 1000;
-}
+.step.img {
+  .border {
+    position: relative;
+    box-shadow: 1px 1px 0px 5px rgba(0, 0, 0, 0.1);
 
-.border {
-  position: relative;
-  box-shadow: 1px 1px 0px 5px rgba(0, 0, 0, 0.1);
+    .retro {
+      box-shadow: inset 0px 0px 100px rgba(0, 0, 20, 1);
+      background: linear-gradient(0deg, rgba(255, 255, 0, 0.1) 60%, rgba(255, 136, 0, 0.1) 80%);
+      display: table;
 
-  .retro {
-    box-shadow: inset 0px 0px 100px rgba(0, 0, 20, 1);
-    background: linear-gradient(0deg, rgba(255, 255, 0, 0.1) 60%, rgba(255, 136, 0, 0.1) 80%);
-    display: table;
-
-    img {
-      -webkit-filter: sepia(20%);
-      position: relative;
-      z-index: -1;
+      img {
+        -webkit-filter: sepia(20%);
+        position: relative;
+        z-index: -1;
+      }
     }
-  }
 
-  .caption {
-    background: #000;
-    font-family: 'Special Elite', cursive;
-    color: #fff;
-    padding: 10px 0 10px 15px;
-    text-transform: uppercase;
-    letter-spacing: 3px;
+    .caption {
+      background: #000;
+      font-family: 'Special Elite', cursive;
+      color: #fff;
+      padding: 10px 0 10px 15px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
   }
 }

@@ -8,18 +8,16 @@
   top: 0;
   left: 0;
   background-color: #000000;
-  background-image: url(../img/noise.png);
+  background-image: url(../img/noise.jpg);
 }
 .frame {
   width: 1100px;
   height: 800px;
   overflow: hidden;
   position: relative;
-  background-color: #f8f8f8;
   border-radius: 5px;
-  border-width: 5px;
-  border-style: solid;
-  border-color: #333333;
+  border: 2px solid #333333;
+  background: #f8f8f8 url(../img/paper.jpg);
 }
 .frame .shadow {
   box-shadow: inset 0px -1px 100px #000000;
@@ -78,29 +76,21 @@
   z-index: 2;
   font-size: 45px;
 }
-.cutout {
-  background-color: red;
-  width: 100px;
-  height: 100px;
-  border-radius: 25px;
-  position: absolute;
-  z-index: 1000;
-}
-.border {
+.step.img .border {
   position: relative;
   box-shadow: 1px 1px 0px 5px rgba(0, 0, 0, 0.1);
 }
-.border .retro {
+.step.img .border .retro {
   box-shadow: inset 0px 0px 100px #000014;
   background: linear-gradient(0deg, rgba(255, 255, 0, 0.1) 60%, rgba(255, 136, 0, 0.1) 80%);
   display: table;
 }
-.border .retro img {
+.step.img .border .retro img {
   -webkit-filter: sepia(20%);
   position: relative;
   z-index: -1;
 }
-.border .caption {
+.step.img .border .caption {
   background: #000;
   font-family: 'Special Elite', cursive;
   color: #fff;
