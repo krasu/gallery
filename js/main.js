@@ -13,7 +13,7 @@ $(function () {
     var steps = $('.step').not('#overview'),
         radius = 2000;
 
-    var increase = Math.PI * 2 / steps.length, angle = 160;
+    var increase = Math.PI * 2 / steps.length, angle = 0;
     steps.each(function (i, elem) {
         var x = radius * Math.cos(angle) + radius * 2,
             y = radius * Math.sin(angle) + radius * 2,
@@ -25,9 +25,10 @@ $(function () {
             'data-rotate-z': rotation
         })
 
-        angle += increase;
+        angle -= increase;
     })
 
+    var img = steps.filter('.img').first()
     function replaceFrame() {
         var computedStyle = window.getComputedStyle(impressEl[0], null),
             matrix = computedStyle.getPropertyValue('transform')
@@ -40,8 +41,8 @@ $(function () {
         if (matrix != 'none') data = matrix.split('(')[1].split(')')[0].split(',');
 
         frame.css({
-            width: 1100 * data[0],
-            height: 700 * data[0]
+            width: img.width() * data[0],
+            height: img.height() * data[0]
         })
 
         frame.css({
@@ -53,4 +54,8 @@ $(function () {
     enableImpress && impress().init();
     replaceFrame()
     $(window).on('resize', replaceFrame);
+    $(window).on('impress:step', function() {
+        console.log('REPLACE IFRAME!!!')
+        replaceFrame()
+    });
 })

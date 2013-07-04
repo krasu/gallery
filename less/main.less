@@ -1,4 +1,4 @@
-@import 'vendors/normalize.css';
+@import '../css/vendors/normalize.css';
 @import "//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css";
 
 .bg {
@@ -84,6 +84,35 @@
   }
 }
 
+.intro {
+  width: 1200px;
+  height: 706px;
+  text-align: center;
+  padding-top: 500px;
+
+  .label {
+    font-family: 'Special Elite', cursive;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 50px;
+    line-height: 1.1;
+  }
+
+  .nav-tip {
+    padding-top: 50px;
+    font-family: 'Special Elite', cursive;
+    color: #000;
+    letter-spacing: 3px;
+    font-size: 14px;
+    line-height: 1.1;
+  }
+
+  img {
+    margin-bottom: 50px;
+  }
+}
+
 .step.img {
   .border {
     position: relative;
@@ -95,19 +124,20 @@
       display: table;
 
       img {
-        -webkit-filter: sepia(20%);
         position: relative;
         z-index: -1;
       }
     }
 
     .caption {
-      background: #000;
+      background: #222;
       font-family: 'Special Elite', cursive;
+      font-size: 30px;
       color: #fff;
-      padding: 10px 0 10px 15px;
+      padding: 16px 0 8px 15px;
       text-transform: uppercase;
       letter-spacing: 3px;
+      line-height: 1.1;
     }
   }
 }
