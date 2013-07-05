@@ -2,15 +2,7 @@ $(function () {
     var enableImpress = true,
         impressEl = $('#impress'),
         frame = $('.frame'),
-        stepTpl = $('#step-')
-
-
-    for (var i = 0; i < 8; i++) {
-        stepTpl.clone().attr('id', 'step-' + i).appendTo(impressEl)
-    }
-    stepTpl.remove()
-
-    var steps = $('.step').not('#overview'),
+        steps = $('.step').not('#overview'),
         radius = 2000;
 
     var increase = Math.PI * 2 / steps.length, angle = 0;
@@ -29,6 +21,7 @@ $(function () {
     })
 
     var img = steps.filter('.img').first()
+
     function replaceFrame() {
         var computedStyle = window.getComputedStyle(impressEl[0], null),
             matrix = computedStyle.getPropertyValue('transform')
@@ -54,7 +47,7 @@ $(function () {
     enableImpress && impress().init();
     replaceFrame()
     $(window).on('resize', replaceFrame);
-    $(window).on('impress:step', function() {
+    $(window).on('impress:step', function () {
         console.log('REPLACE IFRAME!!!')
         replaceFrame()
     });
