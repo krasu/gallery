@@ -1,6 +1,5 @@
 $(function () {
-    var enableImpress = true,
-        impressEl = $('#impress'),
+    var impressEl = $('#impress'),
         frame = $('.frame'),
         steps = $('.step').not('#overview'),
         radius = 2000;
@@ -42,17 +41,25 @@ $(function () {
         })
     }
 
-    enableImpress && impress().init();
-    replaceFrame()
+    var images = $('img'), i = 0
+    images.on('load', function () {
+        i++
+        console.log(images.length, i)
+    })
 
     $(window)
         .on('resize', replaceFrame)
-        .on('keyup', function(event) {
+        .on('keyup', function (event) {
             if (event.which != 27) return
 
             window.location = 'index.html'
         })
         .on('impress:step', function () {
+            replaceFrame()
+        })
+        .on('load', function() {
+            $('.bg').find('.preload').remove().end().removeClass('loading')
+            impress().init();
             replaceFrame()
         });
 })
