@@ -20,8 +20,6 @@ $(function () {
         angle -= increase;
     })
 
-    var img = steps.filter('.img').first()
-
     function replaceFrame() {
         var computedStyle = window.getComputedStyle(impressEl[0], null),
             matrix = computedStyle.getPropertyValue('transform')
@@ -34,8 +32,8 @@ $(function () {
         if (matrix != 'none') data = matrix.split('(')[1].split(')')[0].split(',');
 
         frame.css({
-            width: img.width() * data[0],
-            height: img.height() * data[0]
+            width: frame.width() * data[0],
+            height: frame.height() * data[0]
         })
 
         frame.css({
@@ -46,12 +44,13 @@ $(function () {
 
     enableImpress && impress().init();
     replaceFrame()
+
     $(window)
         .on('resize', replaceFrame)
         .on('keyup', function(event) {
             if (event.which != 27) return
 
-            window.location = '/'
+            window.location = 'index.html'
         })
         .on('impress:step', function () {
             replaceFrame()
