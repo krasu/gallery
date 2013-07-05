@@ -46,9 +46,14 @@ $(function () {
 
     enableImpress && impress().init();
     replaceFrame()
-    $(window).on('resize', replaceFrame);
-    $(window).on('impress:step', function () {
-        console.log('REPLACE IFRAME!!!')
-        replaceFrame()
-    });
+    $(window)
+        .on('resize', replaceFrame)
+        .on('keyup', function(event) {
+            if (event.which != 27) return
+
+            window.location = '/'
+        })
+        .on('impress:step', function () {
+            replaceFrame()
+        });
 })
