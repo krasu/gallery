@@ -1,6 +1,10 @@
 $(function () {
     var impressEl = $('#impress'),
         frame = $('.frame'),
+        initFrameSize = {
+            width: frame.width(),
+            height: frame.height()
+        },
         steps = $('.step').not('#overview'),
         radius = 2000;
 
@@ -19,20 +23,12 @@ $(function () {
         angle -= increase;
     })
 
-    function replaceFrame() {
-        var computedStyle = window.getComputedStyle(impressEl[0], null),
-            matrix = computedStyle.getPropertyValue('transform')
-                || computedStyle.getPropertyValue('-moz-transform')
-                || computedStyle.getPropertyValue('-webkit-transform')
-                || computedStyle.getPropertyValue('-ms-transform')
-                || computedStyle.getPropertyValue('-o-transform'),
-            data = [1];
-
-        if (matrix != 'none') data = matrix.split('(')[1].split(')')[0].split(',');
+    function replaceFrame(scale) {
+        scale = scale || 1
 
         frame.css({
-            width: frame.width() * data[0],
-            height: frame.height() * data[0]
+            width: initFrameSize.width * scale,
+            height: initFrameSize.height * scale
         })
 
         frame.css({
@@ -41,25 +37,19 @@ $(function () {
         })
     }
 
-    var images = $('img'), i = 0
-    images.on('load', function () {
-        i++
-        console.log(images.length, i)
-    })
-
+    replaceFrame()
     $(window)
-        .on('resize', replaceFrame)
         .on('keyup', function (event) {
             if (event.which != 27) return
 
             window.location = 'index.html'
         })
-        .on('impress:step', function () {
-            replaceFrame()
-        })
-        .on('load', function() {
+        .on('load', function () {
             $('.bg').find('.preload').remove().end().removeClass('loading')
             impress().init();
-            replaceFrame()
-        });
+        })
+
+    impressEl.on('scaled', function (event) {
+        replaceFrame(event.originalEvent.detail)
+    })
 })

@@ -542,6 +542,7 @@
             // version 0.5.2 of impress.js: http://github.com/bartaz/impress.js/blob/0.5.2/js/impress.js
             window.clearTimeout(stepEnterTimeout);
             stepEnterTimeout = window.setTimeout(function() {
+                triggerEvent(root, 'scaled', targetScale)
                 onStepEnter(activeStep);
             }, duration + delay);
             
